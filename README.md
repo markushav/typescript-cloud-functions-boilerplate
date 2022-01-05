@@ -5,3 +5,10 @@ This is a quick and dirty boilerplate that includes a dev server for developing 
 To develop, run "npm run install", "npm run dev". To deploy, go to GCP Concole, create project, head to Cloud Build, connect your repository and create a trigger that will automatically deploy your cloud functions.
 
 More detailed instructions of the deployment process might follow later, but trust me: you can do it.
+
+## Deployed
+
+You can see the example cloud functions deployed at:
+
+- https://europe-west1-ts-cloud-functions-boilerplate.cloudfunctions.net/exampleCloudFunction
+- https://europe-west1-ts-cloud-functions-boilerplate.cloudfunctions.net/anotherExampleCloudFunction
