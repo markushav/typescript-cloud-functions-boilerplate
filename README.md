@@ -6,7 +6,7 @@ To develop, run "npm run install", "npm run dev". To deploy, go to GCP Concole, 
 
 More detailed instructions of the deployment process might follow later, but trust me: you can do it.
 
-## Deployed
+## Example functions
 
 You can see the example cloud functions deployed at:
 
