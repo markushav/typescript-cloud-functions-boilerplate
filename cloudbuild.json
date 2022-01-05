@@ -1,0 +1,57 @@
+{
+  "steps": [
+    {
+      "name": "gcr.io/cloud-builders/npm",
+      "args": [
+        "install"
+      ]
+    },
+    {
+      "name": "gcr.io/cloud-builders/npm",
+      "args": [
+        "run",
+        "build"
+      ]
+    },
+    {
+      "name": "gcr.io/cloud-builders/gcloud",
+      "args": [
+        "functions",
+        "deploy",
+        "fetchProperties",
+        "--source",
+        "functions",
+        "--timeout",
+        "540s",
+        "--region",
+        "europe-west1",
+        "--trigger-http",
+        "--allow-unauthenticated",
+        "--runtime",
+        "nodejs16",
+        "--memory",
+        "1024MB"
+      ]
+    },
+    {
+      "name": "gcr.io/cloud-builders/gcloud",
+      "args": [
+        "functions",
+        "deploy",
+        "fetchAnotherProperties",
+        "--source",
+        "functions",
+        "--timeout",
+        "540s",
+        "--region",
+        "europe-west1",
+        "--trigger-http",
+        "--allow-unauthenticated",
+        "--runtime",
+        "nodejs16",
+        "--memory",
+        "1024MB"
+      ]
+    }
+  ]
+}
