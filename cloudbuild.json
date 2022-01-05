@@ -18,7 +18,7 @@
       "args": [
         "functions",
         "deploy",
-        "fetchProperties",
+        "exampleCloudFunction",
         "--source",
         "functions",
         "--timeout",
@@ -38,7 +38,7 @@
       "args": [
         "functions",
         "deploy",
-        "fetchAnotherProperties",
+        "anotherExampleCloudFunction",
         "--source",
         "functions",
         "--timeout",
