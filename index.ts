@@ -33,11 +33,13 @@ const cloudBuildObject = {
     {
       name: "gcr.io/cloud-builders/npm",
       args: ["run", "build"],
+      id: "build",
     },
     ...Object.keys(functions)
       .filter((key) => !key.startsWith("_"))
       .map((key) => ({
         name: "gcr.io/cloud-builders/gcloud",
+        waitFor: ["build"],
         args: [
           "functions",
           "deploy",

@@ -11,10 +11,14 @@
       "args": [
         "run",
         "build"
-      ]
+      ],
+      "id": "build"
     },
     {
       "name": "gcr.io/cloud-builders/gcloud",
+      "waitFor": [
+        "build"
+      ],
       "args": [
         "functions",
         "deploy",
@@ -35,6 +39,9 @@
     },
     {
       "name": "gcr.io/cloud-builders/gcloud",
+      "waitFor": [
+        "build"
+      ],
       "args": [
         "functions",
         "deploy",
