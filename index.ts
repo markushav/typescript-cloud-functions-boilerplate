@@ -40,6 +40,7 @@ const cloudBuildObject = {
       .map((key) => ({
         name: "gcr.io/cloud-builders/gcloud",
         waitFor: ["build"],
+        id: key,
         args: [
           "functions",
           "deploy",
@@ -56,6 +57,23 @@ const cloudBuildObject = {
           "nodejs16",
           "--memory",
           "1024MB",
+        ],
+      })),
+    ...Object.keys(functions)
+      .filter((key) => !key.startsWith("_"))
+      .map((key) => ({
+        name: "gcr.io/cloud-builders/gcloud",
+        waitFor: [key],
+        args: [
+          "functions",
+          "add-iam-policy-binding",
+          key,
+          "--member",
+          "allUsers",
+          "--role",
+          "roles/cloudfunctions.invoker",
+          "--region",
+          "europe-west1",
         ],
       })),
   ],

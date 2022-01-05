@@ -19,6 +19,7 @@
       "waitFor": [
         "build"
       ],
+      "id": "exampleCloudFunction",
       "args": [
         "functions",
         "deploy",
@@ -42,6 +43,7 @@
       "waitFor": [
         "build"
       ],
+      "id": "anotherExampleCloudFunction",
       "args": [
         "functions",
         "deploy",
@@ -58,6 +60,40 @@
         "nodejs16",
         "--memory",
         "1024MB"
+      ]
+    },
+    {
+      "name": "gcr.io/cloud-builders/gcloud",
+      "waitFor": [
+        "exampleCloudFunction"
+      ],
+      "args": [
+        "functions",
+        "add-iam-policy-binding",
+        "exampleCloudFunction",
+        "--member",
+        "allUsers",
+        "--role",
+        "roles/cloudfunctions.invoker",
+        "--region",
+        "europe-west1"
+      ]
+    },
+    {
+      "name": "gcr.io/cloud-builders/gcloud",
+      "waitFor": [
+        "anotherExampleCloudFunction"
+      ],
+      "args": [
+        "functions",
+        "add-iam-policy-binding",
+        "anotherExampleCloudFunction",
+        "--member",
+        "allUsers",
+        "--role",
+        "roles/cloudfunctions.invoker",
+        "--region",
+        "europe-west1"
       ]
     }
   ]
